@@ -5,12 +5,12 @@ node("master") {
       [$class: 'TextParameterDefinition', defaultValue: 'qa', description: 'Environment', name: 'envi'],
       listGitBranches(branchFilter: '.*',
                       credentialsId: '',
-                      defaultValue: 'development',
+                      defaultValue: '',
                       name: 'infraBranch',
                       quickFilterEnabled: false,
-                      remoteURL: 'https://github.com/tesuvant/helloworld2.git',
+                      remoteURL: 'ssh://git@github.com:jenkinsci/list-git-branches-parameter-plugin.git',
                       selectedValue: 'NONE',
-                      sortMode: 'ASCENDING',
+                      sortMode: 'NONE',
                       tagFilter: '*',
                       type: 'PT_BRANCH')
     ]

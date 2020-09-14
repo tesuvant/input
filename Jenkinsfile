@@ -8,7 +8,7 @@ node("master") {
                       defaultValue: 'development',
                       name: 'infraBranch',
                       quickFilterEnabled: false,
-                      remoteURL: 'https://github.com/tesuvant/helloworld2',
+                      remoteURL: 'https://github.com/tesuvant/helloworld2.git',
                       selectedValue: 'NONE',
                       sortMode: 'ASCENDING',
                       tagFilter: '*',

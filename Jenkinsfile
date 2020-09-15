@@ -1,6 +1,9 @@
 
 // @NonCPS
 def getRefs(String repoUrl) {
+  if (currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')) {
+    print "YEEEEEEEEEESS"
+  }
   def allShasRefs = ("git ls-remote -t -h " + repoUrl).execute()
   def allRefs = allShasRefs.text.readLines().collect { 
     it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '').replaceAll("\\^\\{\\}", '')

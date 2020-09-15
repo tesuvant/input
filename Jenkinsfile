@@ -1,9 +1,6 @@
 
 // @NonCPS
 def getRefs(String repoUrl) {
-  if (currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause')) {
-    print "YEEEEEEEEEESS"
-  }
   def allShasRefs = ("git ls-remote -t -h " + repoUrl).execute()
   def allRefs = allShasRefs.text.readLines().collect { 
     it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '').replaceAll("\\^\\{\\}", '')
@@ -11,13 +8,24 @@ def getRefs(String repoUrl) {
   return allRefs
 }
 
-//  properties([parameters([listGitBranches(branchFilter: '.*', credentialsId: '', defaultValue: 'development', name: 'foo', quickFilterEnabled: false, remoteURL: 'https://github.com/tesuvant/deployments_api_test', selectedValue: 'NONE', sortMode: 'ASCENDING', tagFilter: '*', type: 'PT_BRANCH')])])
+def stepStacks = [
+  enable_00: 'Enable ',
+  enable_01: 'Ena',
+  enable_02: 'En',
+  enable_03: 'Enabl',
+  enable_04: 'Enable ',
+  enable_06: 'Enab',
+  enable_08: 'Enable ',
+  enable_09: 'Ena'
+]
 
+
+stepStacks.each{entry -> [ booleanParam, defaultValue: false, description: $entry.value, name: $entry.value ],}
 
         def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")
         def userInput = input(
           id: 'userInput', message: 'Are you prepared to deploy?', parameters: [
-            [$class: 'ChoiceParameterDefinition', choices: deployOptions, description: 'Approve/Disallow deployment', name: 'deploy-check']
+            stepStacks.each{entry -> [ booleanParam, defaultValue: false, description: $entry.value, name: $entry.value ],}
           ]
         )
 

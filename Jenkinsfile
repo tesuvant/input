@@ -14,7 +14,7 @@ def stepStacks = [
 ]
 
 def newList = []
-stepStacks.each{entry -> newList += [ $class: booleanParam, defaultValue: false, description: entry.value, name: entry.key ]}
+stepStacks.each{entry -> newList += [ $class: "booleanParam", defaultValue: false, description: entry.value, name: entry.key ]}
 
 
         def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")

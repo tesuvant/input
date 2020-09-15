@@ -6,6 +6,7 @@ def getRefs(String repoUrl) {
   def allRefs = allShasRefs.text.readLines().collect { 
     it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '').replaceAll("\\^\\{\\}", '')
   }
+  print allRefs.join(" : ")
   return allRefs
 }
 

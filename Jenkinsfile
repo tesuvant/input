@@ -2,11 +2,9 @@
 // @NonCPS
 def getRefs(String repoUrl) {
   def allShasRefs = ("git ls-remote -t -h " + repoUrl).execute()
-  print "debug" + allShasRefs
   def allRefs = allShasRefs.text.readLines().collect { 
     it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '').replaceAll("\\^\\{\\}", '')
   }
-  print allRefs.join(" : ")
   return allRefs
 }
 

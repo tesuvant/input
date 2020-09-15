@@ -13,13 +13,14 @@ def getRefs(String repoUrl) {
 
 //  properties([parameters([listGitBranches(branchFilter: '.*', credentialsId: '', defaultValue: 'development', name: 'foo', quickFilterEnabled: false, remoteURL: 'https://github.com/tesuvant/deployments_api_test', selectedValue: 'NONE', sortMode: 'ASCENDING', tagFilter: '*', type: 'PT_BRANCH')])])
 
-  
-      node {
+
         def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")
         def userInput = input(
           id: 'userInput', message: 'Are you prepared to deploy?', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: deployOptions, description: 'Approve/Disallow deployment', name: 'deploy-check']
           ]
         )
+
+      node {
         echo "you selected: ${userInput}"
     }

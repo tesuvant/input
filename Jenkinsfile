@@ -12,7 +12,7 @@ def getRefs(String repoUrl) {
 
   
       node {
-        def deployOptions = getRefs("https://github.com/tesuvan/tag.git").join("\n")
+        def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")
         def userInput = input(
           id: 'userInput', message: 'Are you prepared to deploy?', parameters: [
             [$class: 'ChoiceParameterDefinition', choices: deployOptions, description: 'Approve/Disallow deployment', name: 'deploy-check']

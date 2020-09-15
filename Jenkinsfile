@@ -9,14 +9,7 @@ def getRefs(String repoUrl) {
 }
 
 def stepStacks = [
-  enable_00: 'Enable ',
-  enable_01: 'Ena',
-  enable_02: 'En',
-  enable_03: 'Enabl',
-  enable_04: 'Enable ',
-  enable_06: 'Enab',
-  enable_08: 'Enable ',
-  enable_09: 'Ena'
+  enable_00: 'Enable '
 ]
 
 
@@ -25,7 +18,7 @@ stepStacks.each{entry -> [ booleanParam, defaultValue: false, description: $entr
         def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")
         def userInput = input(
           id: 'userInput', message: 'Are you prepared to deploy?', parameters: [
-            stepStacks.each{entry -> [ booleanParam, defaultValue: false, description: $entry.value, name: $entry.value ],}
+            stepStacks.each{entry -> [ booleanParam, defaultValue: false, description: $entry.value, name: $entry.value ]}
           ]
         )
 

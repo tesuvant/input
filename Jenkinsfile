@@ -29,4 +29,11 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
 
       node {
         echo "you selected: ${userInput}"
+        
+        new File( 'README.md' ).text.tokenize( '\n' ).findAll {
+  it.contains 'id: '
+}.each {
+  println it
+}
+        
     }

@@ -13,10 +13,13 @@ def stepStacks = [
   enable_01: 'Enab2'
 ]
 
-
+    def slaveOpts = 'azure\nazure4'
+    def tfWorkspaceOpts = 'prod\ndev'
 
 def newList = []
 stepStacks.each{entry -> newList += [ booleanParam(defaultValue: false, description: entry.value, name: entry.key) ]}
+newList += [ $class: 'ChoiceParameterDefinition', choices: tfWorkspaceOpts, description: '222', name: 'workspace']
+newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, description: '333', name: 'slave']
 
 
         def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")

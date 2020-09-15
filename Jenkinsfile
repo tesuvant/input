@@ -1,3 +1,8 @@
+def gettags = ("git ls-remote -t -h https://github.com/tesuvant/tag.git").execute()
+echo gettags.text.readLines().collect { 
+  it.split()[1].replaceAll('refs/heads/', '').replaceAll('refs/tags/', '').replaceAll("\\^\\{\\}", '')
+}
+
 node("master") {
 
   properties([parameters([listGitBranches(branchFilter: '.*', credentialsId: '', defaultValue: 'development', name: 'foo', quickFilterEnabled: false, remoteURL: 'https://github.com/tesuvant/deployments_api_test', selectedValue: 'NONE', sortMode: 'ASCENDING', tagFilter: '*', type: 'PT_BRANCH')])])

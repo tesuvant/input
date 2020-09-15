@@ -16,4 +16,3 @@ def allRefs = allShasRefs.text.readLines().collect {
         )
         echo "you selected: ${userInput}"
     }
-  }

@@ -12,11 +12,14 @@ def stepStacks = [
   enable_00: 'Enable '
 ]
 
+def newList = []
+stepStacks.each{entry -> newList += "[ booleanParam, defaultValue: false, description: $entry.value, name: $entry.key  ]"}
+
+
+
         def deployOptions = getRefs("https://github.com/tesuvant/tag").join("\n")
         def userInput = input(
-          id: 'userInput', message: 'Are you prepared to deploy?', parameters: [
-            stepStacks.each{entry -> [ booleanParam, defaultValue: false, description: $entry.value, name: $entry.key ]}
-          ]
+          id: 'userInput', message: 'Are you prepared to deploy?', parameters: newList
         )
 
       node {

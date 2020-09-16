@@ -1,5 +1,8 @@
-env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
-echo "--------"
+def getJobName() {
+  def jobNameParts = env.JOB_NAME.tokenize('/') as String[]
+  return jobNameParts.length < 2 ? env.JOB_NAME : jobNameParts[jobNameParts.length - 2]
+}
+
 // @NonCPS
 def getRefs(String repoUrl) {
   def allShasRefs = ("git ls-remote -t -h " + repoUrl).execute()
@@ -31,6 +34,9 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
       node {
   //      echo "you selected: ${userInput}"
         
+        echo "----"
+        echo getJobName()
+        echo "----"
         stage("SCM") {
           checkout scm
        }

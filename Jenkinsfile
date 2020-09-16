@@ -34,7 +34,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
           checkout scm
        }
        
-        new File("${env.WORKSPACE}/README.md").text.tokenize('\n').find {
+        new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {
           it.contains 'id:'
         }.each {
           println it

@@ -55,3 +55,4 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
        }
         
     }
+

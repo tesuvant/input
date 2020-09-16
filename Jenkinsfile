@@ -36,15 +36,9 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
        
 //        assert list.findResult { it.startsWith('Gra') ? it : null } == 'Grails'
         
-        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains('id:') ? "yay" : null}
+        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains('id:') ? it.split(":")[1].trim() : null}
         echo myid
         
-        new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {
-          it.contains 'id:'
-        }.each {
-          println it.split(":")[1]
-          return
-        }
         
        stage("222") {
           sh """ echo hello """

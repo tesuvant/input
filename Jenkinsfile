@@ -34,7 +34,11 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
           checkout scm
        }
        
-        new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains 'id:' ? (it.split(":")[1]) : null}
+        def list = [1,2,3]
+        assert "Found 2" == list.findResult { it > 1 ? "Found $it" : null }
+        
+        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains 'id:' ? it : null}
+        echo myid
         
         new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {
           it.contains 'id:'

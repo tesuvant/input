@@ -37,8 +37,12 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {
           it.contains 'id:'
         }.each {
-          println it
-          println it.split(":")[0]
+          println it.split(":")[1]
+          return
         }
+        
+       stage("222") {
+          sh """ echo hello """
+       }
         
     }

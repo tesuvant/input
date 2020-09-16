@@ -37,7 +37,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         def list = [1,2,3]
         assert "Found 2" == list.findResult { it > 1 ? "Found $it" : null }
         
-        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains 'id:' ? it : null}
+        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains 'id:' ? "yay" : null}
         echo myid
         
         new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {

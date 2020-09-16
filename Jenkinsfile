@@ -33,6 +33,8 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         stage("SCM") {
           checkout scm
         }
+        echo "23456"
+        echo pwd()
         new File( 'README.md' ).text.tokenize( '\n' ).findAll {
           it.contains 'id: '
         }.each {

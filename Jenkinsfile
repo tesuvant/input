@@ -1,4 +1,4 @@
-echo env
+echo env.toString()
 echo "--------"
 // @NonCPS
 def getRefs(String repoUrl) {

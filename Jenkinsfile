@@ -28,16 +28,15 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         )
 
       node {
-        echo "you selected: ${userInput}"
+  //      echo "you selected: ${userInput}"
         
         stage("SCM") {
           checkout scm
        }
        
-        def list = [1,2,3]
-        assert "Found 2" == list.findResult { it > 1 ? "Found $it" : null }
+//        assert list.findResult { it.startsWith('Gra') ? it : null } == 'Grails'
         
-        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains 'id:' ? "yay" : null}
+        myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains('id:') ? "yay" : null}
         echo myid
         
         new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {

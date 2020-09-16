@@ -1,4 +1,5 @@
-
+echo env
+echo "--------"
 // @NonCPS
 def getRefs(String repoUrl) {
   def allShasRefs = ("git ls-remote -t -h " + repoUrl).execute()

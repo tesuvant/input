@@ -31,7 +31,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         echo "you selected: ${userInput}"
         
         stage("SCM") {
-          scm checkout
+          checkout scm
         }
         new File( 'README.md' ).text.tokenize( '\n' ).findAll {
           it.contains 'id: '

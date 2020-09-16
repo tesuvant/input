@@ -7,12 +7,12 @@ s
 gv
 ##
 asdferr4
-id:12345678    
+d:12345678    
 asd
 
 
 asd#
 
-id: 9876543
+i: 9876543
 
 asdf

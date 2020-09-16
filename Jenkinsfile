@@ -33,11 +33,8 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         stage("SCM") {
           checkout scm
        }
-        
-        def readme = readFile "${env.WORKSPACE}/README.md"
-        
-//        new File( 'README.md' ).text.tokenize( '\n' ).findAll {
-        readme.text.tokenize('\n').findAll {
+       
+        new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findAll {
           it.contains 'id: '
         }.each {
           println it

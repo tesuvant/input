@@ -1,4 +1,4 @@
-echo env.toString()
+env.getEnvironment().each { name, value -> println "Name: $name -> Value $value" }
 echo "--------"
 // @NonCPS
 def getRefs(String repoUrl) {

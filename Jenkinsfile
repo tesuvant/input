@@ -51,7 +51,8 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         
         
        stage("222") {
-          sh """ echo hello """
+          env.FOOBAR = "123456"
+          sh """ echo \$FOOBAR """
        }
         
     }

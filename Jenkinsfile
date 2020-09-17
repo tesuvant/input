@@ -52,10 +52,12 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
      withEnv([ "ZZZ=ploo",
         "XXX=true"
       ]) {
+       /*
        stage("222") {
           env.SSSS = "123456"
           sh """ echo \$FOOBAR """
        }
+       */
       }
        stage("222") {
          sh """ env | sort """

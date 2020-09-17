@@ -45,7 +45,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         
         myid = new File("${env.WORKSPACE}/README.md").text.tokenize('\n').findResult{it.contains('id:') ? it.split(":")[1].trim() : null}
         if(!myid) {
-          error "id not set"
+          echo "id not set"
         }
         //echo myid
         

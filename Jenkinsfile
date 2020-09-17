@@ -37,7 +37,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         echo "----"
         echo getJobName()
         echo "----"
-        stage("SCM") {
+        stage("1") {
           checkout scm
        }
        
@@ -53,17 +53,17 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         "XXX=true"
       ]) {
        /*
-       stage("222") {
+       stage("2") {
           env.SSSS = "123456"
           sh """ echo \$FOOBAR """
        }
        */
       }
-       stage("222") {
+       stage("3") {
          sh """ env | sort """
        }
         def stageSkippedText = "set +x; echo -e '****************************************\nSKIPPED!\n****************************************'"
-       stage("222") {
+       stage("4") {
          sh "$stageSkippedText"
        }
        

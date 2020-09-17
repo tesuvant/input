@@ -68,6 +68,11 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
          stageResult: 'ABORTED'
          //unstable(message: "${STAGE_NAME} is skipped")
        }
+        stage("5") {
+          retry(3) {
+            sh "exit 1"
+          }
+       }
        
 
     }

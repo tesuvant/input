@@ -65,7 +65,8 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         def stageSkippedText = "set +x; echo -e '****************************************\nSKIPPED!\n****************************************'"
        stage("4") {
          sh "$stageSkippedText"
-         unstable(message: "${STAGE_NAME} is skipped")
+         stageResult: 'ABORTED'
+         //unstable(message: "${STAGE_NAME} is skipped")
        }
        
 

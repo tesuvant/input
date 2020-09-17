@@ -49,13 +49,16 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
         }
         //echo myid
         
-     withEnv([ "PLOO=ploo",
-        "BLAH=true"
+     withEnv([ "ZZZ=ploo",
+        "XXX=true"
       ]) {
        stage("222") {
-          env.FOOBAR = "123456"
+          env.SSSS = "123456"
           sh """ echo \$FOOBAR """
        }
-     }
+      }
+       stage("222") {
+         sh """ env | sort """
+       }
     }
 

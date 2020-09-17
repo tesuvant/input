@@ -60,7 +60,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
        stage("222") {
          sh """ env | sort """
        }
-        def stageSkippedText = "echo -e '****************************************\nSKIPPED!\n****************************************'"
+        def stageSkippedText = "set +x; echo -e '****************************************\nSKIPPED!\n****************************************'"
        stage("222") {
          sh "$stageSkippedText"
        }

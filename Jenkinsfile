@@ -69,6 +69,11 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
          stageResult."{STAGE_NAME}" = "ABORTED"
          //unstable(message: "${STAGE_NAME} is skipped")
        }
+        stage("5") {
+          timeout(time: 15, unit: 'SECONDS') {
+            input 'Do you want to proceed to the Deployment?'
+          } 
+        }
        
 
     }

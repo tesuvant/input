@@ -66,8 +66,7 @@ newList += [ $class: 'ChoiceParameterDefinition', choices: slaveOpts, descriptio
                                   "SKIPPED\n========================================'"
         stage("4") {
          sh "$stageSkippedText"
-         stageResult."{STAGE_NAME}" = "ABORTED"
-         //unstable(message: "${STAGE_NAME} is skipped")
+         unstable(message: "${STAGE_NAME} is skipped")
        }
         stage("5") {
           timeout(time: 15, unit: 'SECONDS') {
